@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="MyWPFApp.TestExecutionPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MyWPFApp">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="Test Execution" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox x:Name="txtTestCaseId" Width="200" Height="30" Margin="0,0,10,0" Text="Enter Test Case ID"/>
+            <ComboBox x:Name="cmbScriptType" Width="150" Height="30" Margin="0,0,10,0">
+                <ComboBoxItem Content="playwright" IsSelected="True"/>
+                <ComboBoxItem Content="selenium"/>
+            </ComboBox>
+            <Button x:Name="btnExecute" Content="Execute" Width="100" Height="30" Background="#FF42A5F5" Foreground="White" Click="btnExecute_Click"/>
+        </StackPanel>
+        <ListView x:Name="lvExecutionLogs" Grid.Row="2" Margin="0,0,0,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Timestamp" Width="150" DisplayMemberBinding="{Binding timestamp}"/>
+                    <GridViewColumn Header="Message" Width="300" DisplayMemberBinding="{Binding message}"/>
+                    <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding status}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnExit" Grid.Row="3" Content="Exit to Execution Log" Width="150" Height="30" Background="#FFEF5350" Foreground="White" Click="btnExit_Click"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="MyWPFApp.DashboardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:MyWPFApp"
+        Title="Dashboard" Height="500" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!-- Define Grid Columns: Sidebar and Content -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Define Grid Rows: Header and Content -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Column="0" Grid.ColumnSpan="2" Background="#FF1E88E5">
+            <Grid>
+                <TextBlock Text="My Dashboard" FontSize="20" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                    <TextBlock x:Name="txtUsername" Foreground="White" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <Button x:Name="btnUserMenu" Content="▼" Width="20" Height="20" Background="Transparent" Foreground="White" BorderThickness="0" Click="btnUserMenu_Click"/>
+                </StackPanel>
+                <Popup x:Name="popUserMenu" PlacementTarget="{Binding ElementName=btnUserMenu}" Placement="Bottom" StaysOpen="False">
+                    <Border Background="White" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
+                        <Button x:Name="btnLogout" Content="Logout" Width="100" Margin="5" Click="btnLogout_Click"/>
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+
+        <!-- Sidebar -->
+        <Border Grid.Row="1" Grid.Column="0" Background="#FFF5F5F5" BorderBrush="LightGray" BorderThickness="0,0,1,0">
+            <StackPanel>
+                <Button x:Name="btnProjects" Content="Projects" Height="40" Margin="10,10,10,5" Background="#FF42A5F5" Foreground="White" Click="btnProjects_Click"/>
+                <Button x:Name="btnTestExecution" Content="Test Execution" Height="40" Margin="10,5" Background="#FF42A5F5" Foreground="White" Click="btnTestExecution_Click"/>
+                <Button x:Name="btnGenerateScript" Content="Generate Script" Height="40" Margin="10,5" Background="#FF42A5F5" Foreground="White" Click="btnGenerateScript_Click"/>
+                <Button x:Name="btnReuseScript" Content="Reuse Script" Height="40" Margin="10,5" Background="#FF42A5F5" Foreground="White" Click="btnReuseScript_Click"/>
+                <Button x:Name="btnExecutionLog" Content="Execution Log" Height="40" Margin="10,5" Background="#FF42A5F5" Foreground="White" Click="btnExecutionLog_Click"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Content Area -->
+        <ContentControl x:Name="contentArea" Grid.Row="1" Grid.Column="1" Margin="10"/>
+    </Grid>
+</Window>
